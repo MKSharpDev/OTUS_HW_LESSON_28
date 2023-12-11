@@ -2,6 +2,10 @@
 using System.Diagnostics;
 
 
+
+
+
+
 int[] intS = AddRandomIntsInArray(100000);
 int[] intM = AddRandomIntsInArray(1000000);
 int[] intL = AddRandomIntsInArray(10000000);
@@ -44,7 +48,7 @@ async void Sum(int[] arr, string arrName)
 
     Console.WriteLine($"Сумма массива обычным способом  {arrName} = {rezultOrdinary}");
     Console.WriteLine($"Время затраченное на операцию обычным способом с массивом {arrName} = {timeRezOrdinary}");
-    Console.WriteLine($"Сумма массива при помощи Thread {arrName} = {rezultThread}");
+    Console.WriteLine($"Сумма массива при помощи Task {arrName} = {rezultThread}");
     Console.WriteLine($"Время затраченное на операц при помощи Paralle с массивом {arrName} = {timeRezThread}");
     Console.WriteLine($"Сумма массива при помощи Parallel {arrName} = {rezultThreadParallel}");
     Console.WriteLine($"Время затраченное на операц при помощи Paralle с массивом {arrName} = {timeRezThreadParallel}");
