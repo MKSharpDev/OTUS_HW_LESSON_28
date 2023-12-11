@@ -19,17 +19,13 @@ void Sum(int[] arr, string arrName)
     TimeSpan timeRezOrdinary = sw.Elapsed;
 
 
-    //sw.Restart();
-    //static object LockPackageList = new object();
-    //int rezultThread;
-    //lock (LockPackageList)
-    //{
-
-        
-    //}
+    sw.Restart();
     
-    //sw.Stop();
-    //TimeSpan timeRezThread = sw.Elapsed;
+    int rezultThread = 0;
+    Parallel.ForEach(arr, x => Interlocked.Add(ref rezultThread, x));
+
+    sw.Stop();
+    TimeSpan timeRezThread = sw.Elapsed;
 
 
     sw.Restart();
@@ -39,10 +35,12 @@ void Sum(int[] arr, string arrName)
 
 
     Console.WriteLine($"Сумма массива обычным способом  {arrName} = {rezultOrdinary}" );
-    Console.WriteLine($"Время затраченное на операцию обычным способом с массивом {arrName} =  {timeRezOrdinary}" );
-
+    Console.WriteLine($"Время затраченное на операцию обычным способом с массивом {arrName} = {timeRezOrdinary}" );
+    Console.WriteLine($"Сумма массива при помощи Parallel {arrName} = {rezultThread}");
+    Console.WriteLine($"Время затраченное на операц при помощи Paralle с массивом {arrName} = {timeRezThread}");
     Console.WriteLine($"Сумма массива при помощи PLINQ {arrName} = {rezultPLINQ}");
-    Console.WriteLine($"Время затраченное на операцию при помощи PLINQ с массивом {arrName} =  {timeRezPLINQ}");
+    Console.WriteLine($"Время затраченное на операцию при помощи PLINQ с массивом {arrName} = {timeRezPLINQ}");
+    Console.WriteLine();
 }
 
 
